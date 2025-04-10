@@ -27,21 +27,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      background: linear-gradient(180deg, #cdeeff 0%, #ffffff 100%);
+      background: linear-gradient(to bottom, #dbefff 0%, #ffffff 100%);
       background-attachment: fixed;
-      animation: cloudDrift 30s ease-in-out infinite alternate;
       overflow: hidden;
       position: relative;
-    }
-
-    @keyframes cloudDrift {
-      0% {
-        background-position: 0% 0%;
-      }
-      100% {
-        background-position: 100% 100%;
-      }
     }
 
     .logo {
@@ -49,15 +38,15 @@
       font-size: 120px;
       margin-bottom: 40px;
       text-align: center;
-      color: #333;
+      color: #2d2d2d;
       z-index: 2;
     }
 
     .container {
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: rgba(255, 255, 255, 0.88);
       padding: 35px 40px;
       border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       width: 100%;
       max-width: 360px;
       z-index: 2;
@@ -87,7 +76,7 @@
     }
 
     .login-btn {
-      background-color: #111;
+      background-color: #2f4eb2;
       color: white;
       border: none;
       border-radius: 12px;
@@ -99,7 +88,7 @@
     }
 
     .login-btn:hover {
-      background-color: #333;
+      background-color: #1e378f;
     }
 
     .extra-links {
@@ -117,7 +106,7 @@
       text-decoration: underline;
     }
 
-    /* 부드러운 구름 느낌 추가용 구름 이미지 */
+    /* 구름 */
     .cloud {
       position: absolute;
       background: url('https://i.ibb.co/GHdF4tk/cloud.png') no-repeat;
@@ -147,20 +136,16 @@
     }
 
     @keyframes floatClouds {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(200%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(200%); }
     }
   </style>
 
-  <!-- 벚꽃 날리는 JS -->
+  <!-- 벚꽃 JS -->
   <script src="https://cdn.jsdelivr.net/gh/motyar/sakura@master/sakura.min.js"></script>
 </head>
 <body>
-  <!-- 몽글몽글 구름 -->
+  <!-- 구름 이미지 (숨김용 요소 포함) -->
   <div class="cloud"></div>
   <div class="cloud"></div>
   <div class="cloud"></div>
@@ -186,7 +171,7 @@
     </div>
   </div>
 
-  <!-- 벚꽃 실행 -->
+  <!-- 벚꽃 떨어지게 -->
   <script>
     new Sakura('body', {
       colors: [
