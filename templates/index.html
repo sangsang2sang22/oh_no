@@ -35,7 +35,6 @@
       position: relative;
     }
 
-    /* 제목 */
     .logo {
       font-family: 'SinchonRhapsody', cursive;
       font-size: 120px;
@@ -45,7 +44,6 @@
       z-index: 2;
     }
 
-    /* 로그인창 흰색 배경 */
     .container {
       background: #ffffff;
       border-radius: 20px;
@@ -115,7 +113,6 @@
       text-decoration: underline;
     }
 
-    /* 벚꽃이 뒤에 깔리도록 */
     canvas {
       position: fixed !important;
       top: 0;
@@ -126,10 +123,8 @@
   </style>
 </head>
 <body>
-  <!-- 제목 -->
   <div class="logo">oh_no!</div>
 
-  <!-- 로그인 창 -->
   <div class="container">
     <form id="loginForm">
       <label for="username">NAME</label>
@@ -147,10 +142,24 @@
     </div>
   </div>
 
-  <!-- 벚꽃 애니메이션 -->
   <script src="https://cdn.jsdelivr.net/gh/s-yadav/sakura@master/sakura.min.js"></script>
   <script>
     new Sakura('body');
+
+    // 로그인 후 진단평가 페이지로 이동
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // 실제 인증 로직은 백엔드에서 처리해야 함 (여기선 예시로 넘어감)
+      if (username && password) {
+        // 페이지 이동
+        window.location.href = 'diagnosis.html';
+      } else {
+        alert('아이디와 비밀번호를 입력해주세요');
+      }
+    });
   </script>
 </body>
 </html>
