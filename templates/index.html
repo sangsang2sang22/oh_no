@@ -104,7 +104,7 @@
       text-decoration: underline;
     }
 
-    /* 벚꽃나무 이미지 */
+    /* 벚꽃나무 */
     .tree {
       position: absolute;
       right: 0;
@@ -117,20 +117,25 @@
       height: 100%;
     }
 
-    /* 벚꽃잎 스타일 */
+    /* 벚꽃잎 */
     .petal {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-image: url('https://cdn-icons-png.flaticon.com/512/742/742751.png'); /* 벚꽃잎 아이콘 */
+      width: 24px;
+      height: 24px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/3461/3461571.png'); /* 진짜 벚꽃잎 아이콘 */
       background-size: cover;
       pointer-events: none;
       z-index: 1;
-      animation: fall linear infinite;
+      animation: fall 7s linear forwards;
+      opacity: 0.9;
     }
 
     @keyframes fall {
-      to {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
       }
@@ -166,32 +171,26 @@
 
   <!-- 벚꽃잎 떨어지기 -->
   <script>
-    // 벚꽃잎 여러 개 생성
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
       document.body.appendChild(petal);
 
-      // 초기 위치 설정
-      const startX = window.innerWidth - 100; // 우측에서 시작
-      const startY = Math.random() * window.innerHeight; // 랜덤한 높이에서 시작
+      // 위치 조정 (오른쪽 상단 근처에서 시작)
+      const startX = window.innerWidth - Math.random() * 200;
       petal.style.left = `${startX}px`;
-      petal.style.top = `${startY}px`;
+      petal.style.top = `${-30}px`;
 
-      // 애니메이션 시간과 지연 설정
-      const duration = 5 + Math.random() * 3;
-      const delay = Math.random() * 5;
-      petal.style.animationDuration = `${duration}s`;
-      petal.style.animationDelay = `${delay}s`;
+      petal.style.animationDuration = `${5 + Math.random() * 3}s`;
+      petal.style.opacity = Math.random() * 0.8 + 0.2;
 
-      // 애니메이션 종료 후 요소 제거
+      // 사라지면 제거
       petal.addEventListener('animationend', () => {
         petal.remove();
       });
     }
 
-    // 일정 간격으로 벚꽃잎 생성
-    setInterval(createPetal, 500);
+    setInterval(createPetal, 300);
   </script>
 </body>
 </html>
