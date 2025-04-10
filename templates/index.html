@@ -149,15 +149,14 @@
     // 로그인 후 진단평가 페이지로 이동
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-      // 실제 인증 로직은 백엔드에서 처리해야 함 (여기선 예시로 넘어감)
-      if (username && password) {
-        // 페이지 이동
+      // 임시 인증 조건 (문상섭 / 3606)
+      if (username === '문상섭' && password === '3606') {
         window.location.href = 'diagnosis.html';
       } else {
-        alert('아이디와 비밀번호를 입력해주세요');
+        alert('아이디 또는 비밀번호가 잘못되었습니다.');
       }
     });
   </script>
