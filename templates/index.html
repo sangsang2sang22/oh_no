@@ -2,121 +2,95 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>oh_no! 로그인</title>
-
-  <!-- SinchonRhapsody 폰트 -->
+  <title>Spring Login</title>
   <style>
-    @font-face {
-      font-family: 'SinchonRhapsody';
-      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2503@1.0/SinchonRhapsody.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      background-color: #f2f2f2;
+      margin: 0;
+      background: #f0f0f0;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       overflow: hidden;
-      position: relative;
     }
 
-    .logo {
-      font-family: 'SinchonRhapsody', cursive;
-      font-size: 120px;
-      margin-bottom: 40px;
+    .title {
       text-align: center;
-      z-index: 2;
+      font-size: 100px;
+      font-family: "SinchonRhapsody", sans-serif;
+      margin-top: 60px;
     }
 
-    .container {
-      background-color: #fff;
-      padding: 35px 40px;
+    .login-container {
+      background: white;
+      width: 300px;
+      margin: 40px auto;
+      padding: 20px 30px;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 360px;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
       z-index: 2;
       position: relative;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      background-color: #ddd;
     }
 
-    label {
-      font-size: 13px;
-      color: #333;
-      margin-bottom: 6px;
-      margin-left: 4px;
+    .login-container h4 {
+      margin: 5px 0 0 0;
+      font-size: 12px;
       font-weight: bold;
     }
 
-    input {
+    .login-container button {
       width: 100%;
-      padding: 12px 12px 12px 10px;
-      margin-bottom: 18px;
-      border: none;
-      border-radius: 12px;
-      background-color: #ddd;
-      font-size: 15px;
-    }
-
-    .login-btn {
+      padding: 12px;
       background-color: #111;
       color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 0;
-      font-size: 16px;
       font-weight: bold;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      margin-top: 10px;
     }
 
-    .login-btn:hover {
-      background-color: #333;
-    }
-
-    .extra-links {
+    .login-container a {
+      display: block;
       text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .extra-links a {
-      color: #2f4eb2;
+      font-size: 12px;
+      margin-top: 10px;
+      color: #3366cc;
       text-decoration: none;
     }
 
-    .extra-links a:hover {
-      text-decoration: underline;
+    .login-container .signup {
+      color: #000;
     }
 
-    /* 벚꽃잎 애니메이션 스타일 */
-    .petal {
-      position: fixed;
-      top: -10px;
-      width: 24px;
-      height: 24px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Cherry_blossom_petal.svg/1024px-Cherry_blossom_petal.svg.png');
-      background-size: cover;
-      opacity: 0.8;
+    /* 벚꽃 나무 스타일 */
+    .cherry-blossom-tree {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      z-index: 1;
+      background: url('https://i.imgur.com/YgxOUfO.png') no-repeat right bottom;
+      background-size: contain;
       pointer-events: none;
-      animation-name: fall, sway;
-      animation-iteration-count: infinite;
+    }
+
+    /* 벚꽃잎 애니메이션 */
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://i.imgur.com/3zyD3rK.png') no-repeat center center;
+      background-size: cover;
+      animation: fall 8s linear infinite;
+      z-index: 0;
     }
 
     @keyframes fall {
@@ -125,59 +99,39 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh) rotate(360deg);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
       }
-    }
-
-    @keyframes sway {
-      0% { transform: translateX(0px); }
-      50% { transform: translateX(20px); }
-      100% { transform: translateX(-20px); }
     }
   </style>
 </head>
 <body>
-  <!-- 벚꽃잎 생성 스크립트 -->
+  <div class="title">oh_no!</div>
+
+  <div class="login-container">
+    <h4>NAME</h4>
+    <input type="text" placeholder="아이디를 입력하세요" />
+    <h4>PASSWORD</h4>
+    <input type="password" placeholder="비밀번호를 입력하세요" />
+    <button>Log in</button>
+    <a href="#">Forgot Password?</a>
+    <a href="#" class="signup">계정이 없으신가요? <span style="color: blue;">Signup!</span></a>
+  </div>
+
+  <div class="cherry-blossom-tree"></div>
+
+  <!-- 벚꽃잎 여러 개 생성 -->
   <script>
-    const createPetal = () => {
+    const totalPetals = 30;
+
+    for (let i = 0; i < totalPetals; i++) {
       const petal = document.createElement("div");
       petal.classList.add("petal");
-      const size = Math.random() * 10 + 15;
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
-      petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.animationDuration = `${5 + Math.random() * 5}s, ${3 + Math.random() * 3}s`;
-      petal.style.animationDelay = `${Math.random() * 5}s, ${Math.random() * 3}s`;
+      petal.style.left = Math.random() * window.innerWidth + "px";
+      petal.style.animationDelay = Math.random() * 5 + "s";
+      petal.style.opacity = Math.random();
       document.body.appendChild(petal);
-
-      setTimeout(() => {
-        petal.remove();
-      }, 12000); // 잎이 사라지면 제거
-    };
-
-    setInterval(createPetal, 500); // 0.5초마다 잎 추가
+    }
   </script>
-
-  <!-- 제목 -->
-  <div class="logo">oh_no!</div>
-
-  <!-- 로그인 박스 -->
-  <div class="container">
-    <form id="loginForm">
-      <label for="username">NAME</label>
-      <input type="text" id="username" name="username" placeholder="아이디를 입력하세요" required />
-
-      <label for="password">PASSWORD</label>
-      <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required />
-
-      <button type="submit" class="login-btn">Log in</button>
-    </form>
-
-    <div class="extra-links">
-      <a href="#">Forgot Password?</a><br />
-      계정이 없으신가요? <a href="#">Signup!</a>
-    </div>
-  </div>
 </body>
 </html>
