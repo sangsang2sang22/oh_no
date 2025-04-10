@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>oh_no! 로그인</title>
 
-  <!-- SinchonRhapsody 폰트 임포트 -->
+  <!-- SinchonRhapsody 폰트 -->
   <style>
     @font-face {
       font-family: 'SinchonRhapsody';
@@ -14,15 +14,27 @@
       font-style: normal;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
       background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .logo {
+      font-family: 'SinchonRhapsody', cursive;
+      font-size: 70px;
+      margin-bottom: 40px;
+      text-align: center;
     }
 
     .container {
@@ -32,14 +44,6 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       width: 100%;
       max-width: 400px;
-      box-sizing: border-box;
-    }
-
-    .logo {
-      font-family: 'SinchonRhapsody', cursive;
-      font-size: 48px;
-      text-align: center;
-      margin-bottom: 40px;
     }
 
     form {
@@ -64,7 +68,6 @@
       border-radius: 12px;
       background-color: #ddd;
       font-size: 15px;
-      box-sizing: border-box;
     }
 
     .login-btn {
@@ -100,8 +103,11 @@
   </style>
 </head>
 <body>
+  <!-- 크게 바깥에 나온 로고 -->
+  <div class="logo">oh_no!</div>
+
+  <!-- 로그인 박스 -->
   <div class="container">
-    <h1 class="logo">oh_no!</h1>
     <form id="loginForm">
       <label for="username">NAME</label>
       <input type="text" id="username" name="username" placeholder="아이디를 입력하세요" required />
