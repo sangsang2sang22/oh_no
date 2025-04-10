@@ -2,27 +2,37 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Spring Login</title>
+  <title>oh_no!</title>
   <style>
+    @font-face {
+      font-family: 'SinchonRhapsody';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2503@1.0/SinchonRhapsody.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
       background: #f0f0f0;
       font-family: Arial, sans-serif;
       overflow: hidden;
+      position: relative;
     }
 
     .title {
       text-align: center;
       font-size: 100px;
-      font-family: "SinchonRhapsody", sans-serif;
+      font-family: 'SinchonRhapsody', sans-serif;
       margin-top: 60px;
+      z-index: 2;
+      position: relative;
     }
 
     .login-container {
       background: white;
-      width: 300px;
+      width: 320px;
       margin: 40px auto;
-      padding: 20px 30px;
+      padding: 25px 30px;
       border-radius: 20px;
       box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
       z-index: 2;
@@ -70,27 +80,29 @@
       color: #000;
     }
 
-    /* 벚꽃 나무 스타일 */
-    .cherry-blossom-tree {
+    /* 벚꽃나무 */
+    .cherry-tree {
       position: absolute;
       right: 0;
       bottom: 0;
-      height: 100%;
-      z-index: 1;
-      background: url('https://i.imgur.com/YgxOUfO.png') no-repeat right bottom;
+      top: 0;
+      width: 300px;
+      background: url('https://i.imgur.com/LPjzfxU.png') no-repeat right bottom;
       background-size: contain;
+      z-index: 1;
       pointer-events: none;
     }
 
-    /* 벚꽃잎 애니메이션 */
+    /* 벚꽃잎 */
     .petal {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: url('https://i.imgur.com/3zyD3rK.png') no-repeat center center;
+      width: 25px;
+      height: 25px;
+      background: url('https://i.imgur.com/o3nTx2S.png') no-repeat center center;
       background-size: cover;
-      animation: fall 8s linear infinite;
+      animation: fall 10s linear infinite;
       z-index: 0;
+      opacity: 0.9;
     }
 
     @keyframes fall {
@@ -118,9 +130,10 @@
     <a href="#" class="signup">계정이 없으신가요? <span style="color: blue;">Signup!</span></a>
   </div>
 
-  <div class="cherry-blossom-tree"></div>
+  <!-- 벚꽃나무 -->
+  <div class="cherry-tree"></div>
 
-  <!-- 벚꽃잎 여러 개 생성 -->
+  <!-- 벚꽃잎 애니메이션 -->
   <script>
     const totalPetals = 30;
 
@@ -129,7 +142,7 @@
       petal.classList.add("petal");
       petal.style.left = Math.random() * window.innerWidth + "px";
       petal.style.animationDelay = Math.random() * 5 + "s";
-      petal.style.opacity = Math.random();
+      petal.style.opacity = 0.7 + Math.random() * 0.3;
       document.body.appendChild(petal);
     }
   </script>
