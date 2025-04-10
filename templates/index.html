@@ -28,24 +28,26 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
 
-    /* 제목은 그대로 */
     .logo {
       font-family: 'SinchonRhapsody', cursive;
       font-size: 120px;
       margin-bottom: 40px;
       text-align: center;
+      z-index: 2;
     }
 
-    /* 로그인 박스 살짝 작게 */
     .container {
       background-color: #fff;
       padding: 35px 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       width: 100%;
-      max-width: 360px; /* 살짝 줄임 */
+      max-width: 360px;
+      z-index: 2;
     }
 
     form {
@@ -101,6 +103,42 @@
     .extra-links a:hover {
       text-decoration: underline;
     }
+
+    /* 벚꽃나무 이미지 */
+    .tree {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .tree img {
+      height: 100%;
+    }
+
+    /* 벚꽃잎 스타일 */
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/742/742751.png'); /* 벚꽃잎 아이콘 */
+      background-size: cover;
+      pointer-events: none;
+      z-index: 1;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -124,5 +162,23 @@
       계정이 없으신가요? <a href="#">Signup!</a>
     </div>
   </div>
+
+  <!-- 벚꽃나무 이미지 -->
+  <div class="tree">
+    <img src="https://png.pngtree.com/png-clipart/20220130/original/pngtree-spring-sakura-tree-png-image_7227813.png" alt="벚꽃나무" />
+  </div>
+
+  <!-- 벚꽃잎 떨어지기 -->
+  <script>
+    // 벚꽃잎 여러 개 생성
+    for (let i = 0; i < 20; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+      petal.style.animationDuration = 4 + Math.random() * 3 + 's';
+      petal.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(petal);
+    }
+  </script>
 </body>
 </html>
