@@ -30,7 +30,7 @@
       min-height: 100vh;
     }
 
-    /* 제목은 원래처럼! */
+    /* 제목은 그대로 */
     .logo {
       font-family: 'SinchonRhapsody', cursive;
       font-size: 120px;
@@ -38,13 +38,14 @@
       text-align: center;
     }
 
+    /* 로그인 박스 살짝 작게 */
     .container {
       background-color: #fff;
-      padding: 40px 50px;
+      padding: 35px 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       width: 100%;
-      max-width: 420px;
+      max-width: 360px; /* 살짝 줄임 */
     }
 
     form {
@@ -103,10 +104,10 @@
   </style>
 </head>
 <body>
-  <!-- 진짜 너가 원한 그대로의 제목 -->
+  <!-- 제목 -->
   <div class="logo">oh_no!</div>
 
-  <!-- 대칭 맞춘 로그인 박스 -->
+  <!-- 로그인 창 -->
   <div class="container">
     <form id="loginForm">
       <label for="username">NAME</label>
