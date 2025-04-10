@@ -21,32 +21,34 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #f2f2f2;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      background: linear-gradient(to top right, #e6f4ff, #ffffff);
       overflow: hidden;
       position: relative;
     }
 
-    /* 제목은 그대로 */
+    /* 제목 */
     .logo {
       font-family: 'SinchonRhapsody', cursive;
       font-size: 120px;
       margin-bottom: 40px;
       text-align: center;
+      color: #4b6cb7;
       z-index: 2;
     }
 
-    /* 로그인 박스 살짝 작게 */
+    /* 로그인창 청순하게 */
     .container {
-      background-color: #fff;
-      padding: 35px 40px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 35px 40px;
       width: 100%;
       max-width: 360px;
       z-index: 2;
@@ -59,24 +61,29 @@
 
     label {
       font-size: 13px;
-      color: #333;
+      color: #555;
       margin-bottom: 6px;
       margin-left: 4px;
       font-weight: bold;
     }
 
     input {
-      width: 100%;
-      padding: 12px 12px 12px 10px;
+      padding: 12px;
       margin-bottom: 18px;
       border: none;
       border-radius: 12px;
-      background-color: #ddd;
+      background-color: #eef2f7;
       font-size: 15px;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      background-color: #ddeeff;
     }
 
     .login-btn {
-      background-color: #111;
+      background-color: #7bb8ff;
       color: white;
       border: none;
       border-radius: 12px;
@@ -84,11 +91,11 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.3s;
     }
 
     .login-btn:hover {
-      background-color: #333;
+      background-color: #569ee7;
     }
 
     .extra-links {
@@ -98,7 +105,7 @@
     }
 
     .extra-links a {
-      color: #2f4eb2;
+      color: #5c8dd6;
       text-decoration: none;
     }
 
@@ -106,7 +113,7 @@
       text-decoration: underline;
     }
 
-    /* 벚꽃이 로그인창을 가리지 않게 */
+    /* 벚꽃이 뒤에 깔리도록 */
     canvas {
       position: fixed !important;
       top: 0;
@@ -115,8 +122,6 @@
       z-index: 1;
     }
   </style>
-
-  <!-- 벚꽃 애니메이션 스타일 (sakura.min.css는 없어도 됨) -->
 </head>
 <body>
   <!-- 제목 -->
@@ -140,10 +145,10 @@
     </div>
   </div>
 
-  <!-- 벚꽃 스크립트 CDN 연결 -->
+  <!-- 벚꽃 애니메이션 -->
   <script src="https://cdn.jsdelivr.net/gh/s-yadav/sakura@master/sakura.min.js"></script>
   <script>
-    new Sakura('body'); // 벚꽃 애니메이션 실행
+    new Sakura('body');
   </script>
 </body>
 </html>
