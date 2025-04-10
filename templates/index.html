@@ -116,31 +116,10 @@
     .tree img {
       height: 100%;
     }
-
-    /* 벚꽃잎 */
-    .petal {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      background-image: url('https://cdn-icons-png.flaticon.com/512/3461/3461571.png'); /* 진짜 벚꽃잎 아이콘 */
-      background-size: cover;
-      pointer-events: none;
-      z-index: 1;
-      animation: fall 7s linear forwards;
-      opacity: 0.9;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
   </style>
+
+  <!-- sakura.css (벚꽃잎 효과) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/s-yadav/sakura@master/sakura.css" />
 </head>
 <body>
   <!-- 제목 -->
@@ -169,28 +148,10 @@
     <img src="https://png.pngtree.com/png-clipart/20220130/original/pngtree-spring-sakura-tree-png-image_7227813.png" alt="벚꽃나무" />
   </div>
 
-  <!-- 벚꽃잎 떨어지기 -->
+  <!-- sakura.js (벚꽃잎 떨어지는 효과) -->
+  <script src="https://cdn.jsdelivr.net/gh/s-yadav/sakura@master/sakura.min.js"></script>
   <script>
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      document.body.appendChild(petal);
-
-      // 위치 조정 (오른쪽 상단 근처에서 시작)
-      const startX = window.innerWidth - Math.random() * 200;
-      petal.style.left = `${startX}px`;
-      petal.style.top = `${-30}px`;
-
-      petal.style.animationDuration = `${5 + Math.random() * 3}s`;
-      petal.style.opacity = Math.random() * 0.8 + 0.2;
-
-      // 사라지면 제거
-      petal.addEventListener('animationend', () => {
-        petal.remove();
-      });
-    }
-
-    setInterval(createPetal, 300);
+    new Sakura('body'); // 벚꽃 떨어지기 시작!
   </script>
 </body>
 </html>
