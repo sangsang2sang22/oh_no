@@ -15,104 +15,81 @@
     }
 
     body {
-      background-color: #fafafa;
-      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      font-family: 'Arial', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 50px;
+      padding-top: 60px;
     }
 
     .logo-title {
       font-family: 'SinchonRhapsody', sans-serif;
       font-size: 6rem;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     .login-box {
-      background: #fff;
-      border: 1px solid #dbdbdb;
-      padding: 40px;
-      width: 350px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      width: 320px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    .login-box label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888;
+      margin-bottom: 4px;
+      display: block;
+      letter-spacing: 0.5px;
     }
 
     .login-box input {
       width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      border: 1px solid #dbdbdb;
-      border-radius: 3px;
-      background-color: #fafafa;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      background-color: #e0e0e0;
+      font-size: 14px;
     }
 
     .login-box button {
       width: 100%;
-      padding: 10px;
-      background-color: #4cb5f9;
-      border: none;
-      border-radius: 4px;
+      padding: 12px;
+      background-color: #1a1a1a;
       color: white;
       font-weight: bold;
-      margin-top: 10px;
+      font-size: 15px;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
-    .divider {
-      width: 100%;
+    .login-box button:hover {
+      background-color: #333;
+    }
+
+    .login-footer {
+      margin-top: 20px;
       text-align: center;
-      margin: 20px 0;
-      position: relative;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 40%;
-      height: 1px;
-      background-color: #ccc;
-    }
-
-    .divider::before {
-      left: 0;
-    }
-
-    .divider::after {
-      right: 0;
-    }
-
-    .divider span {
-      color: #999;
       font-size: 12px;
-      background-color: #fff;
-      padding: 0 10px;
+      color: #666;
     }
 
-    .forgot-password {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #00376b;
+    .login-footer a {
+      color: #3366cc;
       text-decoration: none;
+      font-weight: 500;
+      margin-left: 5px;
     }
 
-    .signup-box {
-      margin-top: 10px;
-      padding: 20px;
-      border: 1px solid #dbdbdb;
-      background: #fff;
-      width: 350px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .signup-box a {
-      color: #0095f6;
-      text-decoration: none;
-      font-weight: bold;
+    .login-footer a:hover {
+      text-decoration: underline;
     }
   </style>
 
@@ -124,21 +101,24 @@
 
   <div class="login-box">
     <form id="loginForm">
-      <input type="text" id="studentId" name="studentId" placeholder="학생 아이디" required />
-      <input type="password" id="password" name="password" placeholder="비밀번호" required />
-      <button type="submit">로그인</button>
+      <label for="studentId">NAME</label>
+      <input type="text" id="studentId" name="studentId" placeholder="아이디를 입력하세요" required />
+
+      <label for="password">PASSWORD</label>
+      <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required />
+
+      <button type="submit">Log in</button>
     </form>
 
-    <div class="divider"><span>또는</span></div>
-
-    <!-- 추가 로그인 방식은 생략 가능 -->
-    <!-- <button class="facebook-login">Facebook으로 로그인</button> -->
-
-    <a href="#" class="forgot-password">비밀번호를 잊으셨나요?</a>
-  </div>
-
-  <div class="signup-box">
-    계정이 없으신가요? <a href="#">가입하기</a>
+    <div class="login-footer">
+      <div>
+        <a href="#">Forgot Password?</a>
+      </div>
+      <div style="margin-top: 8px;">
+        계정이 없으신가요?
+        <a href="#">Signup!</a>
+      </div>
+    </div>
   </div>
 
   <script src="../static/script.js"></script>
