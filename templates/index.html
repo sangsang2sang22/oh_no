@@ -162,3 +162,98 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>진단평가</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1565c0;
+      font-size: 36px;
+    }
+
+    .question-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      padding: 0 10px;
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .question-card .level {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>수학 진단평가</h1>
+  <div class="question-container" id="questions"></div>
+
+  <script>
+    const questionsData = {
+      K10: [
+        "다음 중 짝수는 무엇인가요? ① 3 ② 5 ③ 8 ④ 9",
+        "3x + 5 = 20일 때, x의 값은?",
+        "직각삼각형에서 빗변의 길이를 구하는 공식은?"
+      ],
+      K11: [
+        "함수 f(x) = 2x² + 3의 x=2일 때 함수값은?",
+        "다항식 (x+2)(x-3)을 전개하면?",
+        "다음 중 로그의 성질이 잘못된 것은? ① log(ab)=log a + log b ..."
+      ],
+      K12: [
+        "미분법을 사용하여 f(x)=x²+2x+1의 도함수를 구하시오.",
+        "∫(2x) dx = ?",
+        "확률 P(A∩B) = 0.2, P(B)=0.5일 때 P(A|B)는?"
+      ]
+    };
+
+    function getRandomQuestion(level) {
+      const arr = questionsData[level];
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateQuestions() {
+      const container = document.getElementById("questions");
+      const levels = ["K10", "K11", "K12"];
+      
+      for (let i = 1; i <= 10; i++) {
+        const level = levels[Math.floor(Math.random() * levels.length)];
+        const question = getRandomQuestion(level);
+
+        const card = document.createElement("div");
+        card.className = "question-card";
+        card.innerHTML = `
+          <div class="level">[${level} 수준]</div>
+          <div class="text"><b>Q${i}.</b> ${question}</div>
+        `;
+
+        container.appendChild(card);
+      }
+    }
+
+    window.onload = generateQuestions;
+  </script>
+</body>
+</html>
