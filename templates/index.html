@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>oh_no! - 로그인</title>
 
-  <!-- SinchonRhapsody 폰트 -->
+  <!-- 폰트 로딩 -->
   <style>
     @font-face {
       font-family: 'SinchonRhapsody';
@@ -15,18 +15,22 @@
     }
 
     body {
+      margin: 0;
+      padding: 0;
       background-color: #f2f2f2;
       font-family: 'Arial', sans-serif;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding-top: 60px;
+      height: 100vh;
     }
 
     .logo-title {
       font-family: 'SinchonRhapsody', sans-serif;
       font-size: 6rem;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
     .login-box {
@@ -34,30 +38,37 @@
       padding: 40px 30px;
       border-radius: 16px;
       width: 320px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-      text-align: left;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .login-box label {
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
       font-size: 12px;
       font-weight: 500;
-      color: #888;
-      margin-bottom: 4px;
-      display: block;
-      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 6px;
+      margin-top: 10px;
     }
 
-    .login-box input {
+    input {
       width: 100%;
-      padding: 12px 15px;
+      padding: 12px;
+      margin-bottom: 14px;
       border: none;
       border-radius: 12px;
-      margin-bottom: 20px;
-      background-color: #e0e0e0;
+      background-color: #ddd;
       font-size: 14px;
     }
 
-    .login-box button {
+    button {
       width: 100%;
       padding: 12px;
       background-color: #1a1a1a;
@@ -68,9 +79,10 @@
       border-radius: 12px;
       cursor: pointer;
       transition: background-color 0.2s ease;
+      margin-top: 10px;
     }
 
-    .login-box button:hover {
+    button:hover {
       background-color: #333;
     }
 
@@ -84,16 +96,13 @@
     .login-footer a {
       color: #3366cc;
       text-decoration: none;
-      font-weight: 500;
-      margin-left: 5px;
+      margin: 0 4px;
     }
 
     .login-footer a:hover {
       text-decoration: underline;
     }
   </style>
-
-  <link rel="stylesheet" href="../static/styles.css" />
 </head>
 <body>
 
@@ -111,16 +120,10 @@
     </form>
 
     <div class="login-footer">
-      <div>
-        <a href="#">Forgot Password?</a>
-      </div>
-      <div style="margin-top: 8px;">
-        계정이 없으신가요?
-        <a href="#">Signup!</a>
-      </div>
+      <div><a href="#">Forgot Password?</a></div>
+      <div style="margin-top: 8px;">계정이 없으신가요?<a href="#"> Signup!</a></div>
     </div>
   </div>
 
-  <script src="../static/script.js"></script>
 </body>
 </html>
