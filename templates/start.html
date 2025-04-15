@@ -2,66 +2,77 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>oh_no! 학습 대시보드</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>oh_no! 대시보드</title>
   <style>
+    @font-face {
+      font-family: 'SinchonRhapsody';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2503@1.0/SinchonRhapsody.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #e6f4ff, #ffffff);
-      min-height: 100vh;
+      background: radial-gradient(circle at top, #e6f4ff, #cce6ff, #ffffff);
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
 
-    .logo {
+    h1 {
       font-family: 'SinchonRhapsody', cursive;
-      font-size: 70px;
-      margin-top: 30px;
+      font-size: 60px;
+      margin: 40px 0 20px;
       color: #4b6cb7;
     }
 
-    .dashboard {
-      margin-top: 30px;
-      width: 90%;
-      max-width: 800px;
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
+      width: 90%;
+      max-width: 1000px;
+      margin-bottom: 50px;
     }
 
     .card {
-      background-color: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 30px 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
-      font-weight: bold;
       font-size: 18px;
-      color: #333;
+      font-weight: bold;
+      color: #4b6cb7;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s, background-color 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
       background-color: #f0f8ff;
+      transform: translateY(-5px);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   </style>
 </head>
 <body>
-  <div class="logo">oh_no!</div>
+  <h1>oh_no! 대시보드</h1>
 
-  <div class="dashboard">
-    <div class="card" onclick="location.href='diagnosis.html'">진단평가 응시</div>
-    <div class="card" onclick="location.href='notice.html'">공지사항</div>
-    <div class="card" onclick="location.href='alert-settings.html'">알림 수신 여부</div>
-    <div class="card" onclick="location.href='level.html'">나의 수준 확인</div>
-    <div class="card" onclick="location.href='feedback.html'">오답 피드백 보기</div>
-    <div class="card" onclick="location.href='challenge.html'">유사 문제 도전</div>
-    <div class="card" onclick="location.href='records.html'">학습기록 보기</div>
+  <div class="grid">
+    <a href="diagnosis.html"><div class="card">진단평가 응시</div></a>
+    <a href="notice.html"><div class="card">공지사항</div></a>
+    <a href="level.html"><div class="card">나의 수준 확인</div></a>
+    <a href="feedback.html"><div class="card">오답 피드백 보기</div></a>
+    <a href="challenge.html"><div class="card">유사 문제 도전</div></a>
+    <a href="history.html"><div class="card">학습기록 보기</div></a>
   </div>
 </body>
 </html>
