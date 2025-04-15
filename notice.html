@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>공지사항</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #e6f4ff, #cce6ff, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    h1 {
+      color: #4b6cb7;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .board {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .board-header {
+      font-size: 24px;
+      color: #4b6cb7;
+      margin-bottom: 10px;
+    }
+
+    .board-content {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #7bb8ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #569ee7;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>공지사항</h1>
+
+    <!-- 게시판 영역 -->
+    <div class="board">
+      <div class="board-header">황도원 문상섭 제주도 여행을 가다</div>
+      <div class="board-content">
+        <p>2025년 4월 15일, 황도원과 문상섭 두 학생이 제주도로 여행을 떠났습니다.</p>
+        <p>이 여행은 학생들의 유익한 경험과 자연을 배우기 위한 목적으로 기획되었으며, 다채로운 활동이 예정되어 있습니다.</p>
+        <p>후속 일정과 자세한 내용은 추후 공지될 예정입니다.</p>
+      </div>
+    </div>
+
+    <button onclick="goBack()">뒤로 가기</button>
+  </div>
+
+  <script>
+    function goBack() {
+      // 이전 페이지로 돌아가도록 설정 (메인 페이지로)
+      location.href = "index.html"; // 메인 페이지로 돌아가기
+    }
+  </script>
+</body>
+</html>
