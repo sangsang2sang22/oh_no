@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>oh_no! 학습 대시보드</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #e6f4ff, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'SinchonRhapsody', cursive;
+      font-size: 70px;
+      margin-top: 30px;
+      color: #4b6cb7;
+    }
+
+    .dashboard {
+      margin-top: 30px;
+      width: 90%;
+      max-width: 800px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #f0f8ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">oh_no!</div>
+
+  <div class="dashboard">
+    <div class="card" onclick="location.href='diagnosis.html'">진단평가 응시</div>
+    <div class="card" onclick="location.href='notice.html'">공지사항</div>
+    <div class="card" onclick="location.href='alert-settings.html'">알림 수신 여부</div>
+    <div class="card" onclick="location.href='level.html'">나의 수준 확인</div>
+    <div class="card" onclick="location.href='feedback.html'">오답 피드백 보기</div>
+    <div class="card" onclick="location.href='challenge.html'">유사 문제 도전</div>
+    <div class="card" onclick="location.href='records.html'">학습기록 보기</div>
+  </div>
+</body>
+</html>
