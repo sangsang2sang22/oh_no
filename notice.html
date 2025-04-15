@@ -53,18 +53,18 @@
       line-height: 1.6;
     }
 
-    button {
+    a.button {
+      display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
       background-color: #7bb8ff;
-      border: none;
       border-radius: 8px;
       color: white;
       font-size: 16px;
-      cursor: pointer;
+      text-decoration: none;
     }
 
-    button:hover {
+    a.button:hover {
       background-color: #569ee7;
     }
   </style>
@@ -83,7 +83,8 @@
       </div>
     </div>
 
-    <button onclick="history.back()">뒤로 가기</button>
+    <!-- 뒤로가기 버튼: start.html로 이동 -->
+    <a href="start.html" class="button">뒤로 가기</a>
   </div>
 </body>
 </html>
