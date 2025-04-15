@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>진단평가</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,47 +16,44 @@
       margin: 0;
     }
 
-    h1 {
-      font-size: 36px;
-      color: #4b6cb7;
-      margin-bottom: 30px;
-    }
-
-    .question-box {
-      background-color: #ffffff;
+    .box {
+      background-color: #fff;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
-      max-width: 400px;
       width: 90%;
+      max-width: 500px;
     }
 
-    .question {
-      font-size: 20px;
+    h1 {
+      color: #4b6cb7;
+      font-size: 24px;
       margin-bottom: 20px;
     }
 
-    input {
-      padding: 10px;
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+
+    label {
+      margin: 5px 0;
       font-size: 16px;
-      width: 100px;
-      text-align: center;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 20px;
+      cursor: pointer;
     }
 
     button {
-      padding: 12px 20px;
+      margin-top: 20px;
+      padding: 10px 20px;
       background-color: #7bb8ff;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       color: white;
       font-size: 16px;
-      font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.2s;
     }
 
     button:hover {
@@ -65,24 +62,32 @@
   </style>
 </head>
 <body>
-  <h1>진단평가</h1>
-
-  <div class="question-box">
-    <div class="question">Q1. 1 + 1 = ?</div>
-    <input type="text" id="answer" placeholder="정답 입력" />
-    <br />
-    <button onclick="checkAnswer()">제출하기</button>
+  <div class="box">
+    <h1>
+      \[
+      \lim_{x \to 0} \frac{e^x - 1}{5x} \text{ 의 값은?}
+      \]
+    </h1>
+    <div class="options">
+      <label><input type="radio" name="answer" value="1"> ① 5</label>
+      <label><input type="radio" name="answer" value="2"> ② e</label>
+      <label><input type="radio" name="answer" value="3"> ③ 1</label>
+      <label><input type="radio" name="answer" value="4"> ④ 1/e</label>
+      <label><input type="radio" name="answer" value="5"> ⑤ 1/5</label>
+    </div>
+    <button onclick="moveToNext()">제출하기</button>
   </div>
 
   <script>
-    function checkAnswer() {
-      const input = document.getElementById('answer').value.trim();
-      if (input === '2') {
-        alert('정답입니다! 🎉');
-      } else {
-        alert('오답입니다. 다시 시도해보세요.');
-      }
+    function moveToNext() {
+      // 정답 여부와 관계없이 다음 페이지로 이동
+      location.href = "calculus.html";
     }
+  </script>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 </body>
 </html>
