@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>미적분 문제 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f8ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .box { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); width: 90%; max-width: 600px; text-align: center; }
+    h1 { font-size: 16px; margin-bottom: 20px; line-height: 1.6; }
+    .options { text-align: left; margin-top: 10px; }
+    label { display: block; margin: 5px 0; font-size: 16px; }
+    button { margin-top: 20px; padding: 10px 20px; background: #7bb8ff; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #569ee7; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>
+      \[
+      f(x) = \lim_{n \to \infty} \frac{x^{2n+4} + 2x}{x^{2n} + 1} \text{ 일 때, } f\left(\frac{1}{2}\right) + f(2) \text{의 값을 구하여라.}
+      \]
+    </h1>
+    <div class="options">
+      <label><input type="radio" name="answer" value="1"> ① 0</label>
+      <label><input type="radio" name="answer" value="2"> ② 1</label>
+      <label><input type="radio" name="answer" value="3"> ③ 2</label>
+      <label><input type="radio" name="answer" value="4"> ④ 3</label>
+      <label><input type="radio" name="answer" value="5"> ⑤ 4</label>
+    </div>
+    <button onclick="checkAnswer()">제출하기</button>
+  </div>
+  <script>
+    function checkAnswer() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let score = parseInt(urlParams.get('score')) || 0;
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (selected && selected.value === "2") score++;
+      window.location.href = `problem3.html?score=${score}`;
+    }
+  </script>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

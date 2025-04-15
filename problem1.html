@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>미적분 문제 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f8ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .box { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); width: 90%; max-width: 600px; text-align: center; }
+    h1 { font-size: 18px; margin-bottom: 20px; }
+    .options { text-align: left; margin-top: 10px; }
+    label { display: block; margin: 5px 0; font-size: 16px; }
+    button { margin-top: 20px; padding: 10px 20px; background: #7bb8ff; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #569ee7; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>
+      \[
+      \lim_{x\to 0} \frac{\sin x}{x} = ?
+      \]
+    </h1>
+    <div class="options">
+      <label><input type="radio" name="answer" value="1"> ① 0</label>
+      <label><input type="radio" name="answer" value="2"> ② 1</label>
+      <label><input type="radio" name="answer" value="3"> ③ -1</label>
+      <label><input type="radio" name="answer" value="4"> ④ ∞</label>
+      <label><input type="radio" name="answer" value="5"> ⑤ 존재하지 않음</label>
+    </div>
+    <button onclick="checkAnswer()">제출하기</button>
+  </div>
+  <script>
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const score = selected && selected.value === "2" ? 1 : 0;
+      window.location.href = `problem2.html?score=${score}`;
+    }
+  </script>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

@@ -28,38 +28,45 @@
 
     h1 {
       color: #4b6cb7;
-      font-size: 22px;
+      font-size: 28px;
     }
 
     .message {
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 20px;
       color: #333;
     }
   </style>
 </head>
 <body>
   <div class="box">
-    <h1>결과: <span id="level"></span></h1>
-    <div class="message" id="message"></div>
+    <h1 id="resultText">결과:</h1>
+    <div class="message" id="resultMessage"></div>
   </div>
 
   <script>
-    // URL에서 파라미터 가져오기
-    function getQueryParams() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return {
-        level: urlParams.get('level'),
-        message: urlParams.get('message'),
-      };
+    const params = new URLSearchParams(window.location.search);
+    const score = parseInt(params.get("score"));
+
+    let level = "";
+    let message = "";
+
+    if (score === 1) {
+      level = "이해";
+      message = "적용과 이해가 필요한 시기입니다";
+    } else if (score === 2) {
+      level = "적용";
+      message = "적용과 노력이 필요한 시기입니다";
+    } else if (score === 3) {
+      level = "탐구";
+      message = "신의 영역입니다";
+    } else {
+      level = "미완료";
+      message = "모든 문제를 푸셨는지 확인해 주세요.";
     }
 
-    // 페이지 로드 시 결과 표시하기
-    window.onload = function() {
-      const result = getQueryParams();
-      document.getElementById('level').textContent = result.level;
-      document.getElementById('message').textContent = result.message;
-    }
+    document.getElementById("resultText").textContent = `결과: ${level}`;
+    document.getElementById("resultMessage").textContent = message;
   </script>
 </body>
 </html>
