@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>oh_no! 로그인</title>
-
-  <!-- SinchonRhapsody 폰트 -->
   <style>
     @font-face {
       font-family: 'SinchonRhapsody';
@@ -146,15 +144,14 @@
   <script>
     new Sakura('body');
 
-    // 로그인 후 대시보드 페이지로 이동
+    // 로그인 후 메인 페이지(start.html)로 이동
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      // 임시 인증 조건 (문상섭 / 3606)
       if (username === '문상섭' && password === '3606') {
-        window.location.href = 'dashboard.html';
+        window.location.href = 'start.html'; // 수정된 부분
       } else {
         alert('아이디 또는 비밀번호가 잘못되었습니다.');
       }
