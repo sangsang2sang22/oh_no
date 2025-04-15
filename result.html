@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>결과 페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #e6f4ff, #cce6ff, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .result-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #4b6cb7;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #7bb8ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #569ee7;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h1 id="title">결과</h1>
+    <p id="message"></p>
+    <button class="button" onclick="goBack()">다시 도전하기</button>
+  </div>
+
+  <script>
+    // 사용자 입력에 따른 맞춘 문제 수 계산
+    let correctAnswers = 0;
+    const answers = [5, 2, 1];  // 문제의 정답 (1번, 2번, 3번)
+
+    // 문제 1, 2, 3의 답을 가져옵니다 (사용자가 선택한 답)
+    const userAnswers = [
+      parseInt(localStorage.getItem('answer1')),  // 1번 문제
+      parseInt(localStorage.getItem('answer2')),  // 2번 문제
+      parseInt(localStorage.getItem('answer3'))   // 3번 문제
+    ];
+
+    // 정답을 맞춘 개수 계산
+    userAnswers.forEach((answer, index) => {
+      if (answer === answers[index]) {
+        correctAnswers++;
+      }
+    });
+
+    // 칭호와 설명
+    let title = '';
+    let message = '';
+
+    if (correctAnswers === 1) {
+      title = '이해';
+      message = '적용과 이해가 필요한 시기입니다';
+    } else if (correctAnswers === 2) {
+      title = '적용';
+      message = '적용과 노력이 필요한 시기입니다';
+    } else if (correctAnswers === 3) {
+      title = '탐구';
+      message = '신의 영역입니다';
+    }
+
+    // 결과 표시
+    document.getElementById('title').textContent = `${title} 단계`;
+    document.getElementById('message').textContent = message;
+
+    // 다시 도전하기 버튼 클릭 시 시작 페이지로 돌아가기
+    function goBack() {
+      window.location = "start.html"; // 'start.html'로 돌아가기
+    }
+  </script>
+</body>
+</html>
