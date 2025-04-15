@@ -28,17 +28,15 @@
 
     h1 {
       color: #4b6cb7;
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 20px;
-      word-break: break-word;
-      overflow-wrap: break-word;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .math-question {
-      display: inline-block;
-      text-align: left;
-      width: 100%;
+      font-size: 0.9em; /* 수식 크기 줄이기 */
+      text-align: center;
+      overflow-x: auto;
     }
 
     .options {
@@ -68,6 +66,12 @@
     button:hover {
       background-color: #569ee7;
     }
+
+    /* MathJax 중앙 정렬 */
+    .mjx-container {
+      display: flex !important;
+      justify-content: center !important;
+    }
   </style>
 </head>
 <body>
@@ -93,7 +97,7 @@
   <script>
     function moveToResult() {
       // 결과 페이지로 이동
-      window.location = "result.html";
+      window.location = "calc3.html";
     }
   </script>
 
