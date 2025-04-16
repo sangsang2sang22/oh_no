@@ -80,7 +80,13 @@
 
   <script>
     function moveToNext() {
-      // 정답 여부와 관계없이 다음 페이지로 이동
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        alert("답을 선택해주세요!");
+        return;
+      }
+
+      // 정답을 선택한 경우에만 다음 페이지로 이동
       window.location = "calculus.html";
     }
   </script>

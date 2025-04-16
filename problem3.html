@@ -5,40 +5,111 @@
   <title>미적분 문제 3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body { font-family: Arial, sans-serif; background: #f0f8ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-    .box { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); width: 90%; max-width: 600px; text-align: center; }
-    h1 { font-size: 16px; margin-bottom: 20px; line-height: 1.6; }
-    .options { text-align: left; margin-top: 10px; }
-    label { display: block; margin: 5px 0; font-size: 16px; }
-    button { margin-top: 20px; padding: 10px 20px; background: #7bb8ff; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
-    button:hover { background: #569ee7; }
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #e6f4ff, #cce6ff, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #4b6cb7;
+      font-size: 16px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .math-question {
+      font-size: 0.9em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+
+    label {
+      margin: 5px 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #7bb8ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #569ee7;
+    }
+
+    .mjx-container {
+      display: flex !important;
+      justify-content: center !important;
+    }
   </style>
 </head>
 <body>
   <div class="box">
     <h1>
-      \[
-      f(x) = \lim_{n \to \infty} \frac{x^{2n+1} - x}{x^{2n-1} + 1} \text{ 일 때, } f(3) + f\left(\frac{1}{3}\right) \text{의 값을 구하여라.}
-      \]
+      <div class="math-question">
+        \[
+        f(x) = \lim_{n \to \infty} \frac{x^{2n+1} - x}{x^{2n-1} + 1} \text{ 일 때,} \quad
+        f(3) + f\left(\frac{1}{3}\right) \text{ 의 값을 구하여라.}
+        \]
+      </div>
     </h1>
     <div class="options">
-      <label><input type="radio" name="answer" value="1"> ① \(\frac{26}{3}\)</label>
-      <label><input type="radio" name="answer" value="2"> ② \(\frac{25}{3}\)</label>
+      <label><input type="radio" name="answer" value="1"> ① 26/3</label>
+      <label><input type="radio" name="answer" value="2"> ② 25/3</label>
       <label><input type="radio" name="answer" value="3"> ③ 8</label>
-      <label><input type="radio" name="answer" value="4"> ④ \(\frac{23}{3}\)</label>
-      <label><input type="radio" name="answer" value="5"> ⑤ \(\frac{11}{3}\)</label>
+      <label><input type="radio" name="answer" value="4"> ④ 23/3</label>
+      <label><input type="radio" name="answer" value="5"> ⑤ 11/3</label>
     </div>
-    <button onclick="checkAnswer()">제출하기</button>
+    <button onclick="moveToNext()">제출하기</button>
   </div>
+
   <script>
-    function checkAnswer() {
-      const urlParams = new URLSearchParams(window.location.search);
-      let score = parseInt(urlParams.get('score')) || 0;
+    function moveToNext() {
       const selected = document.querySelector('input[name="answer"]:checked');
-      if (selected && selected.value === "1") score++;
-      window.location.href = `result.html?score=${score}`;
+      if (!selected) {
+        alert("답을 선택해주세요!");
+        return;
+      }
+
+      const answer = selected.value;
+      localStorage.setItem("problem3", answer);
+      window.location.href = "result.html";
     }
   </script>
-  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- MathJax for LaTeX 수식 렌더링 -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 </body>
 </html>
