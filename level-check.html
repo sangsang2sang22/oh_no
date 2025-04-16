@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>나의 수준 확인</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -32,6 +32,18 @@
       margin-bottom: 20px;
     }
 
+    .level {
+      font-size: 20px;
+      font-weight: bold;
+      color: #4b6cb7;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #555;
+      margin-top: 10px;
+    }
+
     button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -46,66 +58,28 @@
     button:hover {
       background-color: #569ee7;
     }
-
-    .result-box {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 90%;
-      max-width: 500px;
-      margin-top: 20px;
-    }
-
-    .level {
-      font-size: 20px;
-      font-weight: bold;
-      color: #4b6cb7;
-    }
-
-    .description {
-      font-size: 18px;
-      color: #555;
-      margin-top: 10px;
-    }
   </style>
 </head>
 <body>
-  <!-- 나의 수준 확인 페이지 -->
-  <div class="box" id="level-page">
-    <h1>나의 수준을 확인하세요</h1>
-    <button onclick="checkLevel()">나의 수준 확인</button>
-  </div>
-
-  <!-- 결과 페이지 -->
-  <div class="result-box" id="result-page" style="display: none;">
-    <h1>문상섭님의 수준</h1>
-    <div class="level" id="level">
-      <!-- 수준이 표시될 부분 -->
-    </div>
-    <div class="description" id="description">
-      <!-- 부가 설명이 표시될 부분 -->
-    </div>
+  <div class="box">
+    <h1>나의 수준</h1>
+    <div class="level" id="level"></div>
+    <div class="description" id="description"></div>
+    <button onclick="location.href='index.html'">홈으로 돌아가기</button>
   </div>
 
   <script>
-    function checkLevel() {
-      // 수준을 "탐구"로 설정하고 부가 설명도 설정
-      const level = "탐구";
-      const description = "신의 영역입니다";
+    // localStorage에서 저장된 결과를 가져옴
+    const level = localStorage.getItem("level");
+    const description = localStorage.getItem("description");
 
-      // localStorage에 값 저장
-      localStorage.setItem("level", level);
-      localStorage.setItem("description", description);
-
-      // 페이지 전환: 결과 페이지로
-      document.getElementById("level-page").style.display = "none";
-      document.getElementById("result-page").style.display = "block";
-
-      // 저장된 값 가져와서 화면에 출력
-      document.getElementById("level").innerText = level;
+    // 결과가 있을 경우 화면에 표시
+    if (level && description) {
+      document.getElementById("level").innerText = `수준: ${level}`;
       document.getElementById("description").innerText = description;
+    } else {
+      document.getElementById("level").innerText = "결과를 찾을 수 없습니다.";
+      document.getElementById("description").innerText = "진단평가를 먼저 진행해 주세요.";
     }
   </script>
 </body>
