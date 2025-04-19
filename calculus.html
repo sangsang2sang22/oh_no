@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>미적분 문제 2</title>
+  <title>미적분 문제 3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
@@ -34,22 +34,28 @@
     }
 
     .math-question {
-      font-size: 0.9em; /* 수식 크기 줄이기 */
+      font-size: 1em; /* 수식의 크기를 조정 */
       text-align: center;
       overflow-x: auto;
+      white-space: nowrap; /* 수식이 한 줄로 나오도록 설정 */
     }
 
     .options {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 10px;
+      justify-content: space-between; /* 보기 항목들이 가로로 일렬로 나열되게 설정 */
+      width: 100%;
+      text-align: left;
     }
 
-    label {
-      margin: 5px 0;
-      font-size: 16px;
-      cursor: pointer;
+    .option-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px; /* 보기 항목 사이의 간격을 조절 */
+      font-size: 14px;
+    }
+
+    .option-item input {
+      margin-right: 5px; /* 보기 항목 앞에 적당한 여백 추가 */
     }
 
     button {
@@ -67,7 +73,6 @@
       background-color: #569ee7;
     }
 
-    /* MathJax 중앙 정렬 */
     .mjx-container {
       display: flex !important;
       justify-content: center !important;
@@ -78,60 +83,36 @@
   <div class="box">
     <h1>
       <div class="math-question">
-        \[
-        f(x) = \lim_{n \to \infty} \frac{x^{2n+4} + 2x}{x^{2n} + 1} \text{ 일 때,} \\
-        f\left(\frac{1}{2}\right) + f(2) \text{ 의 값을 구하여라.}
-        \]
+        \[ f(x) = \lim_{n \to \infty} \frac{x^{2n+1} - x}{x^{2n-1} + 1} \text{ 일 때, } f(3) + f\left(\frac{1}{3}\right) \text{ 의 값을 구하여라.} \]
       </div>
     </h1>
     <div class="options">
-      <label><input type="radio" name="answer" value="1"> ① 16</label>
-      <label><input type="radio" name="answer" value="2"> ② 17</label>
-      <label><input type="radio" name="answer" value="3"> ③ 18</label>
-      <label><input type="radio" name="answer" value="4"> ④ 6</label>
-      <label><input type="radio" name="answer" value="5"> ⑤ 31</label>
+      <div class="option-item"><input type="radio" name="answer" value="1"> ① \( \frac{26}{3} \)</div>
+      <div class="option-item"><input type="radio" name="answer" value="2"> ② \( \frac{25}{3} \)</div>
+      <div class="option-item"><input type="radio" name="answer" value="3"> ③ 8</div>
+      <div class="option-item"><input type="radio" name="answer" value="4"> ④ \( \frac{23}{3} \)</div>
+      <div class="option-item"><input type="radio" name="answer" value="5"> ⑤ \( \frac{11}{3} \)</div>
     </div>
-    <button onclick="moveToResult()">제출하기</button>
+    <button onclick="moveToNext()">제출하기</button>
   </div>
 
   <script>
-    function moveToResult() {
-      // 결과 페이지로 이동
-      window.location = "calc3.html";
+    let currentQuestion = 3; // 현재 문제는 문제 3입니다.
+
+    function moveToNext() {
+      // 문제 순서를 추적하고 다음 문제로 이동하도록 설정
+      currentQuestion++;
+      if (currentQuestion === 4) {
+        location.href = "problem4.html";  // 문제 4로 이동
+      } else {
+        location.href = "result.html";  // 결과 페이지로 이동
+      }
     }
   </script>
 
-  <!-- MathJax for LaTeX rendering -->
+  <!-- MathJax for LaTeX 수식 렌더링 -->
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-
   </script>
 </body>
 </html>
-
-<button onclick="moveToResult()">제출하기</button>
-
-<script>
-  function moveToResult() {
-    const score = 8; // ← 실제 점수 계산 결과로 대체
-    let level = "", description = "";
-
-    if (score >= 9) {
-      level = "탐구";
-      description = "신의 영역입니다.";
-    } else if (score >= 7) {
-      level = "적용";
-      description = "적용과 노력이 필요한 시기입니다.";
-    } else {
-      level = "이해";
-      description = "기초 개념부터 다시 학습하는 것이 좋습니다.";
-    }
-
-    localStorage.setItem("level", level);
-    localStorage.setItem("description", description);
-
-    location.href = "result.html"; // 또는 level-check.html
-  }
-</script>
-
