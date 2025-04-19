@@ -3,7 +3,7 @@ async function fetchLevelFromGPT(score) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer YOUR_API_KEY` // 발급받은 API 키로 교체
+      "Authorization": `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` // 발급받은 API 키로 교체
     },
     body: JSON.stringify({
       model: "gpt-3.5-turbo",
