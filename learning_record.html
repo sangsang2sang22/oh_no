@@ -44,6 +44,17 @@
       height: 400px;
     }
 
+    .feedback {
+      margin-top: 25px;
+      font-size: 16px;
+      color: #444;
+      background-color: #f0f8ff;
+      padding: 10px 20px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
     .button-container {
       margin-top: 30px;
     }
@@ -70,6 +81,7 @@
       <canvas id="barChart"></canvas>
       <canvas id="radarChart"></canvas>
     </div>
+    <div class="feedback" id="feedbackText"></div>
     <div class="button-container">
       <a href="start.html">
         <button>메인 페이지로 돌아가기</button>
@@ -79,10 +91,10 @@
 
   <script>
     function drawCharts() {
-      // ✅ 막대그래프용 가상 데이터
-      const wrongInDiagnosis = 2;  // 진단평가: 총 3문제 중 2개 틀림
-      const wrongInSimilar = 1;    // 유사 문제: 3문제 중 1개 틀림
+      const wrongInDiagnosis = 2;  // 진단평가: 2개 틀림
+      const wrongInSimilar = 1;    // 유사 문제: 1개 틀림
 
+      // ✅ 막대그래프
       const barData = {
         labels: ['진단평가', '유사 문제'],
         datasets: [{
@@ -111,12 +123,13 @@
       const barCtx = document.getElementById('barChart').getContext('2d');
       new Chart(barCtx, barConfig);
 
-      // ✅ 거미줄 그래프용 가상 역량 데이터 (1~5 점 만점)
+      // ✅ 거미줄 그래프
+      const radarScores = [3, 4, 2, 5, 4];  // 가상 역량 점수
       const radarData = {
         labels: ['의사소통', '연결', '추론', '문제 해결', '정보 처리'],
         datasets: [{
           label: '수학 역량',
-          data: [3, 4, 2, 5, 4],
+          data: radarScores,
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           pointBackgroundColor: 'rgba(75, 192, 192, 1)',
@@ -143,6 +156,12 @@
 
       const radarCtx = document.getElementById('radarChart').getContext('2d');
       new Chart(radarCtx, radarConfig);
+
+      // ✅ 피드백 텍스트
+      const feedbackElement = document.getElementById('feedbackText');
+      const minScore = Math.min(...radarScores);
+      const weakestArea = ['의사소통', '연결', '추론', '문제 해결', '정보 처리'][radarScores.indexOf(minScore)];
+      feedbackElement.textContent = `현재 수학 역량 중 '${weakestArea}' 능력이 다소 부족하니 관련 활동을 더 해보면 좋아요!`;
     }
 
     window.onload = drawCharts;
