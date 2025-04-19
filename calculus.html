@@ -40,16 +40,15 @@
 
     .options {
       display: flex;
-      justify-content: space-evenly; /* 버튼들 간격을 고르게 배치 */
+      justify-content: space-between;
       margin-top: 20px;
+      gap: 20px;  /* 선택지들 사이에 일정한 간격 추가 */
     }
 
     label {
       font-size: 16px;
       cursor: pointer;
-      display: inline-block;
-      text-align: center;
-      margin: 0 15px; /* 각 버튼 사이에 적당한 여백 추가 */
+      display: block;
     }
 
     button {
