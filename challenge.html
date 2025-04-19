@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>유사 문제 도전</title>
   <style>
     body {
@@ -86,25 +86,27 @@
 
   <script>
     function generateSimilarProblems() {
-      const totalScore = localStorage.getItem("totalScore");
+      const problem1Answer = localStorage.getItem("diagnosisScore");  // 문제 1
+      const problem2Answer = localStorage.getItem("calculusScore");   // 문제 2
+      const problem3Answer = localStorage.getItem("calc3Score");      // 문제 3
 
       let problemContent = "";
       let options = [];
       let graphFunction = "";
       
-      // 점수에 따른 유사 문제 생성
-      if (totalScore >= 90) {
-        problemContent = "다음 그래프의 극한값을 구하세요.";
-        graphFunction = "y = x^2";  // y = x^2 그래프 예시
-        options = ["(1) 1", "(2) 0", "(3) 2", "(4) 3"];
-      } else if (totalScore >= 60) {
-        problemContent = "다음 함수의 미분계수를 구하세요.";
-        graphFunction = "y = x^3";  // y = x^3 그래프 예시
-        options = ["(1) 1", "(2) 3", "(3) 9", "(4) 6"];
-      } else {
-        problemContent = "다음 함수의 기울기를 구하세요.";
-        graphFunction = "y = x";  // y = x 그래프 예시
-        options = ["(1) 1", "(2) 0", "(3) 2", "(4) 3"];
+      // 틀린 문제를 바탕으로 유사 문제 생성
+      if (problem1Answer !== "5") {
+        problemContent = "다음 극한을 구하세요: lim(x→0) (e^x - 1) / x";
+        graphFunction = "e^x - 1";  // e^x - 1 그래프 예시
+        options = ["(1) 1", "(2) 0", "(3) e", "(4) 2"];
+      } else if (problem2Answer !== "2") {
+        problemContent = "다음 함수의 미분을 구하세요: y = x^2 + 3x + 2";
+        graphFunction = "x^2 + 3x + 2";  // y = x^2 + 3x + 2 그래프 예시
+        options = ["(1) 2x + 3", "(2) 2x - 3", "(3) x^2", "(4) x + 3"];
+      } else if (problem3Answer !== "1") {
+        problemContent = "다음 적분을 구하세요: ∫(x^2) dx";
+        graphFunction = "x^2";  // x^2 그래프 예시
+        options = ["(1) (x^3)/3 + C", "(2) x^3 + C", "(3) (x^2)/2 + C", "(4) x^2 + C"];
       }
 
       const problemContainer = document.getElementById("problemContainer");
@@ -135,12 +137,12 @@
       // 함수 그래프 그리기
       for (let x = -width / 2; x < width / 2; x++) {
         let y;
-        if (func === "y = x^2") {
-          y = Math.pow(x / 50, 2) * 100;  // y = x^2 scaling
-        } else if (func === "y = x^3") {
-          y = Math.pow(x / 50, 3) * 100;  // y = x^3 scaling
-        } else {
-          y = (x / 50) * 100;  // y = x scaling
+        if (func === "e^x - 1") {
+          y = (Math.exp(x / 50) - 1) * 50;  // e^x - 1 그래프
+        } else if (func === "x^2 + 3x + 2") {
+          y = (Math.pow(x / 50, 2) + 3 * (x / 50) + 2) * 50;  // x^2 + 3x + 2 그래프
+        } else if (func === "x^2") {
+          y = Math.pow(x / 50, 2) * 50;  // x^2 그래프
         }
 
         // translate x, y to the canvas coordinates
