@@ -104,22 +104,22 @@
     }
 
     function displayResult() {
-      const totalScore = calculateScore();
-      document.getElementById("score").textContent = '총 점수: ${totalScore}점';
+  const totalScore = calculateScore();
+  document.getElementById("score").textContent = `총 점수: ${totalScore}점`;
 
-      let resultMessage = "";
-      if (totalScore >= 90) {
-        resultMessage = "훌륭한 성과입니다! 수학에 대한 깊은 이해가 돋보입니다.";
-      } else if (totalScore >= 60) {
-        resultMessage = "좋은 성과입니다! 조금 더 연습하면 더욱 향상될 수 있습니다.";
-      } else {
-        resultMessage = "더 많은 연습이 필요합니다. 수학을 계속해서 학습하세요!";
-      }
+  let resultMessage = "";
+  if (totalScore >= 90) {
+    resultMessage = "훌륭한 성과입니다! 수학에 대한 깊은 이해가 돋보입니다.";
+  } else if (totalScore >= 60) {
+    resultMessage = "좋은 성과입니다! 조금 더 연습하면 더욱 향상될 수 있습니다.";
+  } else {
+    resultMessage = "더 많은 연습이 필요합니다. 수학을 계속해서 학습하세요!";
+  }
 
-      const resultDiv = document.createElement("p");
-      resultDiv.textContent = resultMessage;
-      document.querySelector(".result").appendChild(resultDiv);
-    }
+  const resultDiv = document.createElement("p");
+  resultDiv.textContent = resultMessage;
+  document.querySelector(".result").appendChild(resultDiv);
+}
 
     function goBack() {
       window.location.href = "diagnosis.html";
