@@ -4,7 +4,7 @@
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "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" // ← 여기에 GPT API 키 넣기 (주의: 노출X)
+        "Authorization": "Bearer YOUR_API_KEY" // API 키는 'Bearer' 형태로 사용
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
@@ -24,6 +24,7 @@
 
     const data = await response.json();
     const reply = data.choices[0].message.content;
+    
     // 예: "수준: B\n설명: 수학적 개념을 어느 정도 이해하고 있으며 적용 능력도 보입니다."
 
     const levelMatch = reply.match(/수준:\s*([A-E])/);
@@ -41,8 +42,9 @@
     localStorage.setItem("description", description);
   }
 
-  // 예: 점수를 localStorage에서 가져와 GPT에 분석 요청
+  // 진단평가 후 최종 결과로 'score' 값을 localStorage에 저장했다고 가정
   const score = localStorage.getItem("score");
+
   if (score) {
     fetchLevelFromGPT(score);
   } else {
