@@ -89,13 +89,18 @@
   <script>
     function moveToNext() {
       const selected = document.querySelector('input[name="answer"]:checked');
+      
       if (!selected) {
         alert("답을 선택해주세요!");
         return;
       }
       
       // 선택한 답을 localStorage에 저장
-      localStorage.setItem("problem2Answer", selected.value);
+      console.log("선택된 답:", selected.value); // 디버깅: 선택된 값 출력
+      localStorage.setItem("calculusScore", selected.value);
+
+      // 값이 잘 저장되었는지 확인하기
+      console.log("저장된 값:", localStorage.getItem("calculusScore")); // 디버깅: 로컬스토리지에 저장된 값 출력
 
       // 문제 3으로 이동
       window.location = "calc3.html"; // 문제 3번 페이지로 이동
