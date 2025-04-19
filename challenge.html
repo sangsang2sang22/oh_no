@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>유사 문제 도전</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #e6f4ff, #cce6ff, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #4b6cb7;
+      margin-bottom: 20px;
+    }
+
+    .problem {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .options {
+      font-size: 18px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #7bb8ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #569ee7;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>유사 문제 도전</h1>
+    <div id="problemContainer">
+      <p>진단평가 결과를 기반으로 유사 문제를 생성 중...</p>
+    </div>
+    <button onclick="goBack()">메인 페이지로 돌아가기</button>
+  </div>
+
+  <script>
+    // 유사 문제를 자동으로 생성하는 함수
+    function generateSimilarProblems() {
+      // 진단평가 결과에서 점수 가져오기
+      const totalScore = localStorage.getItem("totalScore");
+
+      let problemContent = "";
+      let options = [];
+
+      // 점수에 따른 유사 문제 생성
+      if (totalScore >= 90) {
+        problemContent = "미적분의 극한을 다루는 문제입니다. 극한값을 구하세요.";
+        options = ["(1) 1", "(2) 2", "(3) 3", "(4) 4"];
+      } else if (totalScore >= 60) {
+        problemContent = "다음 함수의 미분계수를 구하세요.";
+        options = ["(1) 1", "(2) 2", "(3) 3", "(4) 4"];
+      } else {
+        problemContent = "다음 그래프의 기울기를 구하는 문제입니다.";
+        options = ["(1) 0", "(2) 1", "(3) -1", "(4) 2"];
+      }
+
+      // 문제와 선택지 HTML로 출력
+      const problemContainer = document.getElementById("problemContainer");
+      problemContainer.innerHTML = `
+        <div class="problem">${problemContent}</div>
+        <div class="options">
+          ${options.map(option => `<button>${option}</button>`).join('')}
+        </div>
+      `;
+    }
+
+    // 메인 페이지로 돌아가기
+    function goBack() {
+      window.location.href = "start.html";  // 메인 페이지로 돌아가기
+    }
+
+    // 페이지 로드 시 유사 문제 생성
+    window.onload = generateSimilarProblems;
+  </script>
+</body>
+</html>
