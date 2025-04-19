@@ -72,16 +72,16 @@
 
   <script>
     function drawChart() {
-      // 진단평가 응시에서 틀린 문제와 유사 문제 데이터 가져오기
-      const wrongAnswerData = localStorage.getItem('wrongAnswers') ? JSON.parse(localStorage.getItem('wrongAnswers')) : [];
-      const similarProblemData = localStorage.getItem('similarProblemResults') ? JSON.parse(localStorage.getItem('similarProblemResults')) : [];
+      // 가상 데이터를 설정 (진단평가에서 틀린 문제 수, 유사 문제 수)
+      const wrongAnswerData = [5];  // 예시: 틀린 문제 수 5개
+      const similarProblemData = [3];  // 예시: 유사 문제에서 풀었던 문제 수 3개
 
       // 데이터를 정리하여 막대그래프 표시
       const data = {
         labels: ['진단평가', '유사 문제'],
         datasets: [{
           label: '틀린 문제 수',
-          data: [wrongAnswerData.length, similarProblemData.length],
+          data: [wrongAnswerData[0], similarProblemData[0]],  // 각 데이터의 첫 번째 값만 사용
           backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
           borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
           borderWidth: 1
