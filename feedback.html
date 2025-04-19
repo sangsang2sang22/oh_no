@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>오답 피드백</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    h1 {
+      color: #4b6cb7;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .feedback {
+      font-size: 16px;
+      margin: 10px 0;
+      padding: 10px;
+      background: #eaf4ff;
+      border-left: 4px solid #4b6cb7;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #7bb8ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #569ee7;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>오답 피드백</h1>
+    <div id="feedback-container">
+      <!-- 여기에 피드백이 표시됩니다 -->
+    </div>
+    <button onclick="goToNextPage()">확인하고 다음으로</button>
+  </div>
+
+  <script>
+    function showFeedback() {
+      const feedbackContainer = document.getElementById("feedback-container");
+
+      const answers = {
+        diagnosisScore: "5", // 문제 1 정답
+        calculusScore: "2",  // 문제 2 정답
+        calc3Score: "1"      // 문제 3 정답
+      };
+
+      const feedbackTexts = {
+        diagnosisScore: "문제 1: 함수의 극한 개념이 헷갈렸다면, 좌극한과 우극한을 따로 계산해보세요.",
+        calculusScore: "문제 2: 무한대에서 지수함수의 극한 비교를 통해 주요 항을 파악하는 것이 중요해요.",
+        calc3Score: "문제 3: 도함수의 정의와 그래프의 기울기 관계를 복습해보세요."
+      };
+
+      Object.keys(answers).forEach((key) => {
+        const userAnswer = localStorage.getItem(key);
+        if (userAnswer && userAnswer !== answers[key]) {
+          const p = document.createElement("div");
+          p.className = "feedback";
+          p.textContent = feedbackTexts[key];
+          feedbackContainer.appendChild(p);
+        }
+      });
+
+      // 오답이 없는 경우
+      if (feedbackContainer.children.length === 0) {
+        feedbackContainer.innerHTML = "<p>모든 문제를 맞췄습니다! 정말 훌륭해요 🎉</p>";
+      }
+    }
+
+    function goToNextPage() {
+      window.location.href = "start.html"; // 다음 페이지 경로로 수정 가능
+    }
+
+    window.onload = showFeedback;
+  </script>
+</body>
+</html>
