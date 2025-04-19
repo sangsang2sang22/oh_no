@@ -61,15 +61,20 @@
     <p id="result-message"></p>
     <!-- 메인 페이지로 돌아가기 버튼 -->
     <button class="home-btn" onclick="goHome()">메인 페이지로 돌아가기</button>
+
+    <!-- 뒤로가기 버튼: start.html로 이동 -->
+    <a href="start.html" class="button">뒤로 가기</a>
   </div>
 
   <script>
+    // 결과값을 URL 파라미터로 받아오기
     const params = new URLSearchParams(window.location.search);
     const score = parseInt(params.get("score"));
 
     let title = "";
     let message = "";
 
+    // 점수에 따른 메시지 설정
     if (score === 3) {
       title = "탐구";
       message = "신의 영역입니다";
@@ -81,11 +86,14 @@
       message = "적용과 이해가 필요한 시기입니다";
     }
 
+    // 결과 텍스트 업데이트
     document.getElementById("result-title").innerText = `결과: ${title}`;
     document.getElementById("result-message").innerText = message;
 
-    <!-- 뒤로가기 버튼: start.html로 이동 -->
-    <a href="start.html" class="button">뒤로 가기</a>
-  </div>
+    // 메인 페이지로 돌아가기 함수 정의
+    function goHome() {
+      window.location.href = 'index.html';  // 메인 페이지로 이동
+    }
+  </script>
 </body>
 </html>
