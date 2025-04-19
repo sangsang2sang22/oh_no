@@ -75,31 +75,29 @@
 
   <script>
     function calculateScore() {
-      // 각 문제의 답을 localStorage에서 가져옴
       const problem1Answer = localStorage.getItem("diagnosisScore");  // 문제 1
-      const problem2Answer = localStorage.getItem("calculusScore");  // 문제 2
-      const problem3Answer = localStorage.getItem("calc3Score");     // 문제 3
+      const problem2Answer = localStorage.getItem("calculusScore");   // 문제 2
+      const problem3Answer = localStorage.getItem("calc3Score");      // 문제 3
 
       let totalScore = 0;
 
-      // 디버깅: 각 문제의 답을 콘솔에 출력하여 확인
       console.log("문제 1 답:", problem1Answer);
       console.log("문제 2 답:", problem2Answer);
       console.log("문제 3 답:", problem3Answer);
 
       // 문제 1: 정답은 5번
       if (problem1Answer === "5") {
-        totalScore += 30; // 문제 1의 점수 추가
+        totalScore += 30;
       }
 
-      // 문제 2: 정답은 2번
-      if (problem2Answer === "17") {
-        totalScore += 35; // 문제 2의 점수 추가
+      // 문제 2: 정답은 18번
+      if (problem2Answer === "18") {
+        totalScore += 35;
       }
 
       // 문제 3: 정답은 1번
       if (problem3Answer === "1") {
-        totalScore += 35; // 문제 3의 점수 추가
+        totalScore += 35;
       }
 
       return totalScore;
@@ -124,13 +122,11 @@
     }
 
     function goBack() {
-      // 문제 페이지로 돌아가기
-      window.location.href = "diagnosis.html"; // 예시로 'diagnosis.html'로 이동
+      window.location.href = "diagnosis.html";
     }
 
     function goToMainPage() {
-      // 메인 페이지로 돌아가기
-      window.location.href = "start.html";  // 'start.html'로 이동하도록 수정
+      window.location.href = "start.html";
     }
 
     window.onload = displayResult;
