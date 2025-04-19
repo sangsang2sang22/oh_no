@@ -24,15 +24,18 @@
       text-align: center;
       width: 90%;
       max-width: 600px;
-      overflow: auto;
+      max-height: 600px;
+      overflow-y: auto;  /* 내용이 넘칠 때 스크롤이 생기도록 함 */
+      word-wrap: break-word;
     }
 
     h1 {
       color: #4b6cb7;
-      font-size: 18px; /* 텍스트 크기 조정 */
+      font-size: 18px; /* 텍스트 크기 줄임 */
       margin-bottom: 20px;
-      white-space: pre-wrap; /* 줄 바꿈을 허용하여 문제 텍스트가 넘치지 않게 함 */
+      white-space: pre-wrap; /* 줄 바꿈을 허용 */
       word-wrap: break-word;
+      line-height: 1.5; /* 줄 간격을 넓혀서 읽기 좋게 함 */
     }
 
     .options {
