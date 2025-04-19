@@ -75,12 +75,10 @@
 
   <script>
     function calculateScore() {
-      // 각 페이지에서 저장된 답안 점수를 가져옴
       const diagnosticScore = localStorage.getItem("diagnosticScore");
       const calculusScore = localStorage.getItem("calculusScore");
       const calc3Score = localStorage.getItem("calc3Score");
 
-      // 점수 계산 (예시로, 각 답안을 1점씩 부여)
       let totalScore = 0;
 
       if (diagnosticScore) totalScore += parseInt(diagnosticScore);
@@ -92,11 +90,8 @@
 
     function displayResult() {
       const totalScore = calculateScore();
-
-      // 총 점수 출력
       document.getElementById("score").textContent = `총 점수: ${totalScore}점`;
 
-      // 점수에 따라 결과 메시지 제공
       let resultMessage = "";
       if (totalScore >= 15) {
         resultMessage = "훌륭한 성과입니다! 수학에 대한 깊은 이해가 돋보입니다.";
@@ -112,16 +107,15 @@
     }
 
     function goBack() {
-      // 페이지를 처음으로 돌아가도록 처리 (예: 첫 문제로 돌아가기)
-      window.location = "diagnosis.html";
+      // 문제 페이지로 돌아가기
+      window.location.href = "diagnosis.html"; // 예시로 'diagnosis.html'로 이동
     }
 
     function goToMainPage() {
       // 메인 페이지로 돌아가기
-      window.location = "start.html";  // start 페이지 URL로 변경
+      window.location.href = "start.html";  // 'start.html'로 이동하도록 수정
     }
 
-    // 페이지 로딩 시 결과 계산
     window.onload = displayResult;
   </script>
 </body>
