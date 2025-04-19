@@ -34,15 +34,15 @@
     }
 
     .math-question {
-      font-size: 1em; /* 수식의 크기를 조정 */
+      font-size: 1em;
       text-align: center;
       overflow-x: auto;
-      white-space: nowrap; /* 수식이 한 줄로 나오도록 설정 */
+      white-space: nowrap;
     }
 
     .options {
       display: flex;
-      justify-content: space-between; /* 보기 항목들이 가로로 일렬로 나열되게 설정 */
+      justify-content: space-between;
       width: 100%;
       text-align: left;
     }
@@ -50,12 +50,12 @@
     .option-item {
       display: flex;
       align-items: center;
-      margin: 0 10px; /* 보기 항목 사이의 간격을 조절 */
+      margin: 0 10px;
       font-size: 14px;
     }
 
     .option-item input {
-      margin-right: 5px; /* 보기 항목 앞에 적당한 여백 추가 */
+      margin-right: 5px;
     }
 
     button {
@@ -98,11 +98,21 @@
 
   <script>
     function moveToResult() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        alert("답을 선택해주세요!");
+        return;
+      }
+
+      // 점수 저장
+      localStorage.setItem("calc3Score", selected.value);
+
+      // 결과 페이지로 이동
       window.location = "result.html";
     }
   </script>
 
-  <!-- MathJax for LaTeX 수식 렌더링 -->
+  <!-- MathJax for LaTeX rendering -->
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>

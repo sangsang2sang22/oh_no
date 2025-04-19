@@ -25,17 +25,17 @@
       width: 90%;
       max-width: 600px;
       max-height: 600px;
-      overflow-y: auto;  /* 내용이 넘칠 때 스크롤이 생기도록 함 */
+      overflow-y: auto;
       word-wrap: break-word;
     }
 
     h1 {
       color: #4b6cb7;
-      font-size: 18px; /* 텍스트 크기 줄임 */
+      font-size: 18px;
       margin-bottom: 20px;
-      white-space: pre-wrap; /* 줄 바꿈을 허용 */
+      white-space: pre-wrap;
       word-wrap: break-word;
-      line-height: 1; /* 줄 간격을 최소화 */
+      line-height: 1;
     }
 
     .options {
@@ -70,11 +70,11 @@
 <body>
   <div class="box">
     <h1>
-      \[
+      \[ 
       f(x) = \lim_{n \to \infty} \frac{x^{2n+4} + 2x}{x^{2n} + 1} \text{ 일 때,}
       \]
       <br>
-      \[
+      \[ 
       f\left(\frac{1}{2}\right) + f(2) \text{ 의 값을 구하여라.}
       \]
     </h1>
@@ -95,8 +95,11 @@
         alert("답을 선택해주세요!");
         return;
       }
+      
+      // 점수 저장
+      localStorage.setItem("calculusScore", selected.value);
 
-      // 선택했을 경우에만 문제 3으로 이동
+      // 다음 페이지로 이동
       window.location = "calc3.html";
     }
   </script>

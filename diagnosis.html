@@ -78,22 +78,21 @@
     <button onclick="moveToNext()">제출하기</button>
   </div>
 
- <script>
-  function moveToNext() {
-    const selected = document.querySelector('input[name="answer"]:checked');
-    if (!selected) {
-      alert("답을 선택해주세요!");
-      return;
+  <script>
+    function moveToNext() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        alert("답을 선택해주세요!");
+        return;
+      }
+      
+      // 점수 저장
+      localStorage.setItem("diagnosticScore", selected.value);
+
+      // 다음 페이지로 이동
+      window.location = 'calculus.html';
     }
-
-    // 확인용 alert() 추가
-    alert("Next Page");
-    
-    // 정답을 선택한 경우에만 다음 페이지로 이동
-    window.location = 'calculus.html';  // 페이지가 이동합니다.
-  }
-</script>
-
+  </script>
 
   <!-- MathJax for LaTeX rendering -->
   <script type="text/javascript" id="MathJax-script" async
