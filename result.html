@@ -75,25 +75,13 @@
 
   <script>
     function calculateScore() {
-      const problem1Answer = localStorage.getItem("problem1Answer");
-      const problem2Answer = localStorage.getItem("problem2Answer");
-      const problem3Answer = localStorage.getItem("calc3Score");
+      const problem3Answer = localStorage.getItem("calc3Score"); // 3번 문제의 답만 필요
 
       let totalScore = 0;
 
-      // 문제 1: 정답은 5번
-      if (problem1Answer === "5") {
-        totalScore += 30;
-      }
-
-      // 문제 2: 정답은 2번
-      if (problem2Answer === "2") {
-        totalScore += 35;
-      }
-
       // 문제 3: 정답은 1번
       if (problem3Answer === "1") {
-        totalScore += 35;
+        totalScore += 35; // 문제 3의 점수 추가
       }
 
       return totalScore;
