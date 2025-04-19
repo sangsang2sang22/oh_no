@@ -91,7 +91,7 @@
       }
 
       // 문제 2: 정답은 18번
-      if (problem2Answer === "18") {
+      if (problem2Answer === "2") {
         totalScore += 35;
       }
 
@@ -105,7 +105,7 @@
 
     function displayResult() {
       const totalScore = calculateScore();
-      document.getElementById("score").textContent = 총 점수: ${totalScore}점;
+      document.getElementById("score").textContent = '총 점수: ${totalScore}점';
 
       let resultMessage = "";
       if (totalScore >= 90) {
