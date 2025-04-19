@@ -93,11 +93,11 @@
       <div class="option-item"><input type="radio" name="answer" value="4"> ④ \( \frac{23}{3} \)</div>
       <div class="option-item"><input type="radio" name="answer" value="5"> ⑤ \( \frac{11}{3} \)</div>
     </div>
-    <button onclick="moveToResult()">제출하기</button>
+    <button onclick="moveToProblem3()">문제 3로 넘어가기</button>
   </div>
 
   <script>
-    function moveToResult() {
+    function moveToProblem3() {
       const selected = document.querySelector('input[name="answer"]:checked');
       if (!selected) {
         alert("답을 선택해주세요!");
@@ -105,16 +105,11 @@
       }
 
       // 선택된 답을 localStorage에 저장
-      console.log("선택한 값:", selected.value);  // 선택된 값 확인
-
-      // 문제 2의 답을 저장할 때, 정확하게 2번을 선택한 값이 '2'로 저장되도록 확인
       localStorage.setItem("calculusScore", selected.value);
-      
-      // localStorage에서 값 확인 (디버깅용)
-      console.log("저장된 calculusScore 값:", localStorage.getItem("calculusScore"));
+      console.log("문제 2의 답:", selected.value);  // 확인용
 
-      // 결과 페이지로 이동
-      window.location = "calc3.html";
+      // 문제 3 페이지로 이동
+      window.location = "calc3.html"; // 문제 3 페이지로 이동하도록 설정
     }
   </script>
 
