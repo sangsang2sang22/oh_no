@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학습 기록 보기</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #e6f4ff, #cce6ff, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #4b6cb7;
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .button-container button {
+      padding: 10px 20px;
+      background-color: #7bb8ff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button-container button:hover {
+      background-color: #569ee7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>학습 기록 보기</h1>
+    <canvas id="learningChart"></canvas>
+    <div class="button-container">
+      <button onclick="goBack()">메인 페이지로 돌아가기</button>
+    </div>
+  </div>
+
+  <script>
+    function drawChart() {
+      // 진단평가 응시에서 틀린 문제와 유사 문제 데이터 가져오기
+      const wrongAnswerData = localStorage.getItem('wrongAnswers') ? JSON.parse(localStorage.getItem('wrongAnswers')) : [];
+      const similarProblemData = localStorage.getItem('similarProblemResults') ? JSON.parse(localStorage.getItem('similarProblemResults')) : [];
+
+      // 데이터를 정리하여 막대그래프 표시
+      const data = {
+        labels: ['진단평가', '유사 문제'],
+        datasets: [{
+          label: '틀린 문제 수',
+          data: [wrongAnswerData.length, similarProblemData.length],
+          backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+          borderWidth: 1
+        }]
+      };
+
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      };
+
+      const ctx = document.getElementById('learningChart').getContext('2d');
+      new Chart(ctx, config);
+    }
+
+    function goBack() {
+      window.location.href = 'start.html';  // 메인 페이지로 돌아가기
+    }
+
+    window.onload = drawChart;
+  </script>
+</body>
+</html>
