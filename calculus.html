@@ -97,19 +97,18 @@
   </div>
 
   <script>
-    function moveToProblem3() {
+    function moveToNext() {
       const selected = document.querySelector('input[name="answer"]:checked');
       if (!selected) {
         alert("답을 선택해주세요!");
         return;
       }
-
-      // 선택된 답을 localStorage에 저장
+      
+      // 선택한 답을 localStorage에 저장
       localStorage.setItem("calculusScore", selected.value);
-      console.log("문제 2의 답:", selected.value);  // 확인용
 
-      // 문제 3 페이지로 이동
-      window.location = "calc3.html"; // 문제 3 페이지로 이동하도록 설정
+      // 문제 3로 이동
+      window.location = 'calc3.html';
     }
   </script>
 
