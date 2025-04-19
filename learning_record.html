@@ -23,7 +23,7 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
       width: 100%;
-      max-width: 800px;
+      max-width: 1000px;
     }
 
     h1 {
@@ -32,15 +32,20 @@
       margin-bottom: 20px;
     }
 
+    .charts {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
     canvas {
       margin-top: 20px;
-      width: 100%;
-      max-width: 600px;
+      max-width: 450px;
       height: 400px;
     }
 
     .button-container {
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .button-container button {
@@ -61,9 +66,11 @@
 <body>
   <div class="container">
     <h1>학습 기록 보기</h1>
-    <canvas id="learningChart"></canvas>
+    <div class="charts">
+      <canvas id="barChart"></canvas>
+      <canvas id="radarChart"></canvas>
+    </div>
     <div class="button-container">
-      <!-- '학습 기록 보기' 버튼을 눌렀을 때 메인 페이지로 돌아가도록 수정 -->
       <a href="start.html">
         <button>메인 페이지로 돌아가기</button>
       </a>
@@ -71,41 +78,74 @@
   </div>
 
   <script>
-    function drawChart() {
-      // 가상 데이터를 설정 (진단평가에서 틀린 문제 수, 유사 문제 수)
-      const wrongAnswerData = [5];  // 예시: 틀린 문제 수 5개
-      const similarProblemData = [3];  // 예시: 유사 문제에서 풀었던 문제 수 3개
+    function drawCharts() {
+      // ✅ 막대그래프용 가상 데이터
+      const wrongInDiagnosis = 2;  // 진단평가: 총 3문제 중 2개 틀림
+      const wrongInSimilar = 1;    // 유사 문제: 3문제 중 1개 틀림
 
-      // 데이터를 정리하여 막대그래프 표시
-      const data = {
+      const barData = {
         labels: ['진단평가', '유사 문제'],
         datasets: [{
           label: '틀린 문제 수',
-          data: [wrongAnswerData[0], similarProblemData[0]],  // 각 데이터의 첫 번째 값만 사용
+          data: [wrongInDiagnosis, wrongInSimilar],
           backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
           borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
           borderWidth: 1
         }]
       };
 
-      const config = {
+      const barConfig = {
         type: 'bar',
-        data: data,
+        data: barData,
         options: {
           responsive: true,
           scales: {
             y: {
               beginAtZero: true,
-            },
-          },
-        },
+              max: 3
+            }
+          }
+        }
       };
 
-      const ctx = document.getElementById('learningChart').getContext('2d');
-      new Chart(ctx, config);
+      const barCtx = document.getElementById('barChart').getContext('2d');
+      new Chart(barCtx, barConfig);
+
+      // ✅ 거미줄 그래프용 가상 역량 데이터 (1~5 점 만점)
+      const radarData = {
+        labels: ['의사소통', '연결', '추론', '문제 해결', '정보 처리'],
+        datasets: [{
+          label: '수학 역량',
+          data: [3, 4, 2, 5, 4],
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+          pointBorderColor: '#fff'
+        }]
+      };
+
+      const radarConfig = {
+        type: 'radar',
+        data: radarData,
+        options: {
+          responsive: true,
+          scales: {
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 5,
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
+        }
+      };
+
+      const radarCtx = document.getElementById('radarChart').getContext('2d');
+      new Chart(radarCtx, radarConfig);
     }
 
-    window.onload = drawChart;
+    window.onload = drawCharts;
   </script>
 </body>
 </html>
