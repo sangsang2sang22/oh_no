@@ -33,22 +33,23 @@
       color: #4b6cb7;
       font-size: 18px;
       margin-bottom: 20px;
-      white-space: nowrap; /* 줄바꿈 방지 */
+      white-space: nowrap; /* 문제 설명을 한 줄로 유지 */
       word-wrap: break-word;
-      line-height: 1;
+      line-height: 1.5; /* 라인 높이를 적당하게 설정 */
+      text-align: center; /* 중앙 정렬 */
     }
 
     .options {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column; /* 세로로 나열 */
+      align-items: center;
       margin-top: 20px;
-      gap: 20px;  /* 선택지들 사이에 일정한 간격 추가 */
     }
 
     label {
       font-size: 16px;
       cursor: pointer;
-      display: block;
+      margin: 8px 0; /* 문항 사이 간격 */
     }
 
     button {
@@ -96,7 +97,7 @@
       localStorage.setItem("calculusScore", selected.value);
 
       // 다음 페이지로 이동
-      window.location = "calc3.html";
+      window.location = "calc3.html"; // 문제 3번 페이지로 이동
     }
   </script>
 
