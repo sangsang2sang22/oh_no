@@ -86,10 +86,10 @@
         return;
       }
       
-      // 점수 저장
-      localStorage.setItem("diagnosticScore", selected.value);
+      // 선택한 답을 localStorage에 저장
+      localStorage.setItem("problem1Answer", selected.value);
 
-      // 다음 페이지로 이동
+      // 문제 2로 이동
       window.location = 'calculus.html';
     }
   </script>
