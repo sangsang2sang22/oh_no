@@ -104,6 +104,35 @@
   <!-- MathJax for LaTeX rendering -->
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    <!-- 제출 버튼 -->
+<button onclick="moveToResult()">제출하기</button>
+
+<!-- 이 아래에 바로 함수 추가 -->
+<script>
+  function moveToResult() {
+    const score = 9; // ← 실제 점수로 대체해야 함
+
+    let level = "";
+    let description = "";
+
+    if (score >= 9) {
+      level = "탐구";
+      description = "신의 영역입니다.";
+    } else if (score >= 7) {
+      level = "적용";
+      description = "적용과 노력이 필요한 시기입니다.";
+    } else {
+      level = "이해";
+      description = "기초 개념부터 다시 학습하는 것이 좋습니다.";
+    }
+
+    localStorage.setItem("level", level);
+    localStorage.setItem("description", description);
+
+    location.href = "result.html";
+  }
+</script>
+
   </script>
 </body>
 </html>
