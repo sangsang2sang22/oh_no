@@ -24,33 +24,38 @@
       text-align: center;
       width: 90%;
       max-width: 600px;
-      max-height: 600px;
-      overflow-y: auto;
-      word-wrap: break-word;
     }
 
     h1 {
       color: #4b6cb7;
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 20px;
-      white-space: nowrap; /* 문제 설명을 한 줄로 유지 */
-      word-wrap: break-word;
-      line-height: 1.5; /* 라인 높이를 적당하게 설정 */
-      text-align: center; /* 중앙 정렬 */
+      line-height: 1.6;
+    }
+
+    .math-question {
+      font-size: 1em;
+      text-align: center;
+      overflow-x: auto;
+      white-space: nowrap;
     }
 
     .options {
       display: flex;
-      flex-direction: column; /* 세로로 나열 */
-      align-items: flex-start; /* 왼쪽 정렬 */
-      margin-top: 20px;
-      padding-left: 20px; /* 왼쪽 여백 */
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
     }
 
-    label {
-      font-size: 16px;
-      cursor: pointer;
-      margin: 8px 0; /* 문항 사이 간격 */
+    .option-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+
+    .option-item input {
+      margin-right: 5px;
     }
 
     button {
@@ -67,43 +72,51 @@
     button:hover {
       background-color: #569ee7;
     }
+
+    .mjx-container {
+      display: flex !important;
+      justify-content: center !important;
+    }
   </style>
 </head>
 <body>
   <div class="box">
     <h1>
-      \[ 
-      f(x) = \lim_{n \to \infty} \frac{x^{2n+4} + 2x}{x^{2n} + 1} \text{ 일 때,} \ f\left(\frac{1}{2}\right) + f(2) \text{ 의 값을 구하여라.}
-      \]
+      <div class="math-question">
+        \[ f(x) = \lim_{n \to \infty} \frac{x^{2n+1} - x}{x^{2n-1} + 1} \text{ 일 때, } f(3) + f\left(\frac{1}{3}\right) \text{ 의 값을 구하여라.} \]
+      </div>
     </h1>
     <div class="options">
-      <label><input type="radio" name="answer" value="16"> ① 16</label>
-      <label><input type="radio" name="answer" value="17"> ② 17</label>
-      <label><input type="radio" name="answer" value="18"> ③ 18</label>
-      <label><input type="radio" name="answer" value="19"> ④ 19</label>
-      <label><input type="radio" name="answer" value="20"> ⑤ 20</label>
+      <div class="option-item"><input type="radio" name="answer" value="1"> ① \( \frac{26}{3} \)</div>
+      <div class="option-item"><input type="radio" name="answer" value="2"> ② \( \frac{25}{3} \)</div>
+      <div class="option-item"><input type="radio" name="answer" value="3"> ③ 8</div>
+      <div class="option-item"><input type="radio" name="answer" value="4"> ④ \( \frac{23}{3} \)</div>
+      <div class="option-item"><input type="radio" name="answer" value="5"> ⑤ \( \frac{11}{3} \)</div>
     </div>
-    <button onclick="moveToNext()">제출하기</button>
+    <button onclick="moveToResult()">제출하기</button>
   </div>
 
   <script>
-  function moveToNext() {
-    const selected = document.querySelector('input[name="answer"]:checked');
-    if (!selected) {
-      alert("답을 선택해주세요!");
-      return;
+    function moveToResult() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        alert("답을 선택해주세요!");
+        return;
+      }
+
+      // 선택된 답을 localStorage에 저장
+      console.log("선택한 값:", selected.value);  // 선택된 값 확인
+
+      // 문제 2의 답을 저장할 때, 정확하게 2번을 선택한 값이 '2'로 저장되도록 확인
+      localStorage.setItem("calculusScore", selected.value);
+      
+      // localStorage에서 값 확인 (디버깅용)
+      console.log("저장된 calculusScore 값:", localStorage.getItem("calculusScore"));
+
+      // 결과 페이지로 이동
+      window.location = "result.html";
     }
-
-    console.log("선택한 값:", selected.value); // 선택된 값 확인
-
-    // 선택한 답을 localStorage에 저장
-    localStorage.setItem("calculusScore", selected.value);
-
-    // 다음 문제로 이동
-    console.log("다음 페이지로 이동합니다.");
-    window.location = 'calc3.html';
-  }
-</script>
+  </script>
 
   <!-- MathJax for LaTeX rendering -->
   <script type="text/javascript" id="MathJax-script" async

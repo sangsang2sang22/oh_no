@@ -73,35 +73,35 @@
     <button onclick="goToMainPage()">메인 페이지로 돌아가기</button>
   </div>
 
-<script>
- function calculateScore() {
-  const problem1Answer = localStorage.getItem("diagnosisScore");  // 문제 1
-  const problem2Answer = localStorage.getItem("calculusScore");   // 문제 2
-  const problem3Answer = localStorage.getItem("calc3Score");      // 문제 3
+  <script>
+    function calculateScore() {
+      const problem1Answer = localStorage.getItem("diagnosisScore");  // 문제 1
+      const problem2Answer = localStorage.getItem("calculusScore");   // 문제 2
+      const problem3Answer = localStorage.getItem("calc3Score");      // 문제 3
 
-  let totalScore = 0;
+      let totalScore = 0;
 
-  console.log("문제 1 답:", problem1Answer);
-  console.log("문제 2 답:", problem2Answer);
-  console.log("문제 3 답:", problem3Answer);
+      console.log("문제 1 답:", problem1Answer);
+      console.log("문제 2 답:", problem2Answer);
+      console.log("문제 3 답:", problem3Answer);
 
-  // 문제 1: 정답은 5번
-  if (problem1Answer === "5") {
-    totalScore += 30;
-  }
+      // 문제 1: 정답은 5번
+      if (problem1Answer === "5") {
+        totalScore += 30;
+      }
 
-  // 문제 2: 정답은 2번
-  if (problem2Answer === "2") {  // 여기서 "2"로 수정
-    totalScore += 35;  // 문제 2의 정답을 2로 설정
-  }
+      // 문제 2: 정답은 2번
+      if (problem2Answer === "2") {  // 문제 2 답이 '2'인 경우 점수 추가
+        totalScore += 35;
+      }
 
-  // 문제 3: 정답은 1번
-  if (problem3Answer === "1") {
-    totalScore += 35;
-  }
+      // 문제 3: 정답은 1번
+      if (problem3Answer === "1") {
+        totalScore += 35;
+      }
 
-  return totalScore;
-}
+      return totalScore;
+    }
 
     function displayResult() {
       const totalScore = calculateScore();
