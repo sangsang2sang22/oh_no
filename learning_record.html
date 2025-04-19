@@ -63,7 +63,10 @@
     <h1>학습 기록 보기</h1>
     <canvas id="learningChart"></canvas>
     <div class="button-container">
-      <button onclick="goBack()">메인 페이지로 돌아가기</button>
+      <!-- '학습 기록 보기' 버튼을 눌렀을 때 메인 페이지로 돌아가도록 수정 -->
+      <a href="start.html">
+        <button>메인 페이지로 돌아가기</button>
+      </a>
     </div>
   </div>
 
@@ -100,10 +103,6 @@
 
       const ctx = document.getElementById('learningChart').getContext('2d');
       new Chart(ctx, config);
-    }
-
-    function goBack() {
-      window.location.href = 'start.html';  // 메인 페이지로 돌아가기
     }
 
     window.onload = drawChart;
