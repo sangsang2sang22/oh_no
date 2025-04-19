@@ -87,20 +87,23 @@
   </div>
 
   <script>
-    function moveToNext() {
-      const selected = document.querySelector('input[name="answer"]:checked');
-      if (!selected) {
-        alert("답을 선택해주세요!");
-        return;
-      }
-      
-      // 선택한 답을 localStorage에 저장
-      localStorage.setItem("calculusScore", selected.value);
-
-      // 문제 3로 이동
-      window.location = 'calc3.html';
+  function moveToNext() {
+    const selected = document.querySelector('input[name="answer"]:checked');
+    if (!selected) {
+      alert("답을 선택해주세요!");
+      return;
     }
-  </script>
+
+    console.log("선택한 값:", selected.value); // 선택된 값 확인
+
+    // 선택한 답을 localStorage에 저장
+    localStorage.setItem("calculusScore", selected.value);
+
+    // 다음 문제로 이동
+    console.log("다음 페이지로 이동합니다.");
+    window.location = 'calc3.html';
+  }
+</script>
 
   <!-- MathJax for LaTeX rendering -->
   <script type="text/javascript" id="MathJax-script" async
